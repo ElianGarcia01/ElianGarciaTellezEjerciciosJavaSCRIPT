@@ -1,4 +1,3 @@
-
 // Ejercicio 1
 // Realizar un programa que permita el ingreso de un numero y muestre su tabla de
 // multiplicar (Los primeros 10 multiplos).
@@ -186,38 +185,57 @@ for(let i = 0; i < numerosArray.length; i++) {
 // numeros pares por un lado y los impares por otro, el ingreso de datos finaliza cuando
 // el usuario ingresa un 0.
 
-// Declaramos tres variables y en la variable num guardamos el valor numerico que ingrese el usuario
- n = 1
+// Declaramos dos variables y en la variable numero guardamos el valor numerico que ingrese el usuario.
 let sumaPares = 0
-let sumaImpares
+let sumaImpares = 0
 
-num = parseInt(prompt("Ingrese un numero y se acumulara con el siguiente numero nuevo que ingrese, ingrese el numero 0 cuando quiera parar"))
+console.log("Ingrese numeros y se hara una suma de los numeros pares e impares, ingrese 0 cuando desee parar")
 
-// Creamos un ciclo while con una condicion que mientras el numero que ingrese el usuario no sea igual a cero el bucle se repetira y le pedira que
-// ingrese un numero por cada vez que se ejecute el ciclo hasta que el usuario decida parar el ciclo ingresando un cero. Y los valores ingresados
-// se acumularan hasta al final mostrar la suma de todos.
+while (true) {
+    let numero = parseInt(prompt("Ingrese un número (ingrese 0 para terminar):"))
 
-do {
-    let num = parseInt(prompt("Ingrese un numero y se acumulara con el siguiente numero nuevo que ingrese, ingrese el numero 0 cuando quiera parar"))
-    // Aqui se hara la suma de numeros impares
-    if (num % 2 != 0) {
-        sumaImpares += num
-    } else {
-    // Aqui se hara la suma de numero pares
-        sumaPares += num
+    if (numero === 0) {
+        break
     }
-} while (num != 0) {
-    console.log("La suma de impares es: " + sumaImpares)
-    console.log("La suma de pares es: " + sumaPares)
-    console.log("Has decidido salir del programa")
+    if (numero % 2 === 0) {
+        sumaPares += numero
+    } else {
+        sumaImpares += numero
+    }
 }
 
-
-
+console.log("La suma de los números pares es: " + sumaPares)
+console.log("La suma de los números impares es: " + sumaImpares)
 
 // Ejercicio 11
+// Dado un array de 10 numeros, realizar un programa que imprima por pantalla el
+// numero mas grande.
 
-/* Ejercicio 13
+// Definir el array de 10 números
+let numeros = [5, 3, 9, 1, 7, 2, 8, 4, 6, 0]
+
+// Encontrar el número más grande usando la función Math.max()
+let numeroMasGrande = Math.max(numeros)
+
+// Imprimir el número más grande
+console.log(`El número más grande en el array es: ${numeroMasGrande}`)
+
+
+// Ejercicio 12
+// Dado un array de 10 numeros, realizar un programa que imprima por pantalla el
+// numero mas chico.
+
+// Definir el array de 10 números
+numeros = [45, 23, 67, 12, 89, 34, 56, 9, 72, 19]
+
+// Encontrar el número más pequeño usando la función Math.min()
+let numeroMasChico = Math.min(numeros)
+
+// Imprimir el número más pequeño
+console.log(`El número más chico en el array es: ${numeroMasChico}`)
+
+
+// Ejercicio 13
 // Realizar un programa que permita jugar a piedra papel o tijeras, se debera poder
 // ingresar los nombres de 2 jugadores. En el bucle del juego se debera pedir 1 a 1 las
 // manos de cada jugador, y en cada turno se debera seguir jugando solo si se produjo
@@ -244,31 +262,8 @@ while (ganador == false) {
     }
 }
 
-// Ejercicio 12
-// Dado un array de 10 numeros, realizar un programa que imprima por pantalla el
-// numero mas chiqmchabtesyu-es4gkt statuS
-
-// Definir el array de 10 números
-numeros = [45, 23, 67, 12, 89, 34, 56, 9, 72, 19]
-
-
-
-
-// Ejercicio 13
-// Realizar un programa que permita jugar a piedra papel o tijeras, se debera poder
-// ingresar los nombres de 2 jugadores. En el bucle del juego se debera pedir 1 a 1 las
-// manos de cada jugador, y en cada turno se debera seguir jugando solo si se produjo
-// un empate. Caso contrario mostrar un mensaje con el nombre de la persona
-// ganadora.
-
-
-
-
-
-
 // Ejercicio 14
 // Realizar un programa que imprima por consola un triangulo de 5 asteriscos de lado.
-
 
 let asterisco = "* "
 
@@ -289,6 +284,4 @@ for (let i = 5; i >= 1; i--) {
 
 // Ejercicio 16
 // Dado un array de 10 numeros desordenados, realizar un programa que imprima por
-// pantalla el array ordenado. (NO USAR SORT, solo ciclos FOR)*/
-
-
+// pantalla el array ordenado. (NO USAR SORT, solo ciclos FOR)
