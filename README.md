@@ -1,1 +1,1 @@
-# ElianGarciaTellezEjerciciosJavaSCRIPT
+# ElianGarciaTellezEjerciciosJavaScript
