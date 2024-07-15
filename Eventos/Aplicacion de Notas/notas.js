@@ -16,16 +16,18 @@ const dataNotas = [] // Array para almacenar las notas
         
         let tarjeta = document.createElement('div')
 
-        tarjeta.className = "col"
+        tarjeta.className = "col p-2"
 
         tarjeta.innerHTML = `
             
             <div class="card border border-1 border-dark h-100">
                 <div class="card-body mx-auto h-100 d-flex flex-column justify-content-around w-100">
-                    <h5 class="card-title text-center">${nota.titulo}</h5>
+                    <div class="d-flex">
+                        <input onClick="marcarRealizada(${nota.id})" type="checkbox" ${nota.realizada ? "checked" : ""}>
+                        <h5 class="card-title text-center"><b>${nota.titulo}</b></h5>
+                    </div>
                     <p class="card-text">Texto: ${nota.texto}</p>
-                    <button onClick="borrarNota(${nota.id})">Borrar Nota</button>
-                    <input onClick="marcarRealizada(${nota.id})" type="checkbox" ${nota.realizada ? "checked" : ""}>
+                    <button type="button" class="btn btn-primary mb-3 bg-danger border-0 onClick="borrarNota(${nota.id})">Borrar Nota</button>
                 </div>
             </div>
             `
@@ -147,10 +149,12 @@ function pintarNotasConFiltro(notasFiltradas) {
             
             <div class="card border border-1 border-dark h-100">
                 <div class="card-body mx-auto h-100 d-flex flex-column justify-content-around w-100">
-                    <h5 class="card-title text-center">${nota.titulo}</h5>
+                    <div class="d-flex">
+                        <input onClick="marcarRealizada(${nota.id})" type="checkbox" ${nota.realizada ? "checked" : ""}>
+                        <h5 class="card-title text-center"><b>${nota.titulo}</b></h5>
+                    </div>
                     <p class="card-text">Texto: ${nota.texto}</p>
-                    <button onClick="borrarNota(${nota.id})">Borrar Nota</button>
-                    <input onClick="marcarRealizada(${nota.id})" type="checkbox" ${nota.realizada ? "checked" : ""}>
+                    <button type="button" class="btn btn-primary mb-3 bg-danger border-0 onClick="borrarNota(${nota.id})">Borrar Nota</button>
                 </div>
             </div>
             `
