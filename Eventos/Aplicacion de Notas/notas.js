@@ -34,6 +34,9 @@ const dataNotas = [] // Array para almacenar las notas
     })
     }
 
+
+    // CODIGO DE BOTON GUARDAR
+
 // Funcion para agrega una nota
 function agregarNotas(titulo,texto) {
     let nuevaNota = {
@@ -47,6 +50,22 @@ function agregarNotas(titulo,texto) {
     pintarNotas()
 }
 
+// Evento para guardar la nota al hacer click en el boton guardar
+document.getElementById('guardar').addEventListener('click', () => {
+    const titulo = document.getElementById('titulo').value
+    const texto = document.getElementById('texto').value
+
+    if (titulo && texto) {
+        agregarNotas(titulo, texto);
+        document.getElementById('titulo').value = ''
+        document.getElementById('texto').value = ''
+    }
+})
+
+
+
+    // CODIGO DE BOTON BORRAR
+
 // Función para borrar una nota
 function borrarNota(id) {
     let borrar = dataNotas.findIndex(nota => nota.id === id)
@@ -55,6 +74,15 @@ function borrarNota(id) {
         pintarNotas()
     }
 }
+
+// Evento para borrar la nota escrita al hacer click en el boton borrar
+document.getElementById('borrar').addEventListener('click', () => {
+    document.getElementById('titulo').value = ''
+    document.getElementById('texto').value = ''
+})
+
+
+    // CODIGO DE CHECBOX PARA MARCAR UNA NOTA COMO REALIZADA
 
 // Función para marcar una nota como realizada
 function marcarRealizada(id) {
@@ -65,48 +93,18 @@ function marcarRealizada(id) {
     }
 }
 
+
+    // CODIGO PARA FILTRAR NOTAS POR TEXTO
+
 // Función para filtrar notas por texto
 function filtrarPorTexto(array, texto) {
     if (!texto) return array
     return array.filter(nota => nota.titulo.includes(texto) || nota.texto.includes(texto))
 }
 
-// Función para filtrar notas realizadas
-function filtrarPorRealizadas(array) {
-    return array.filter(nota => nota.realizada)
-}
-
-
-// MANEJO DE EVENTOS
-document.getElementById('guardar').addEventListener('click', () => {
-    const titulo = document.getElementById('titulo').value;
-    const texto = document.getElementById('texto').value;
-
-    if (titulo && texto) {
-        agregarNotas(titulo, texto);
-        document.getElementById('titulo').value = ''
-        document.getElementById('texto').value = ''
-    }
-});
-
-document.getElementById('borrar').addEventListener('click', () => {
-    document.getElementById('titulo').value = ''
-    document.getElementById('texto').value = ''
-});
-
 document.getElementById('buscarTexto').addEventListener('input', () => {
-    const texto = document.getElementById('buscarTexto').value;
-    const realizadas = document.getElementById('filter-done').checked;
-    let resultado = filtrarPorTexto(dataNotas, texto)
-    if (realizadas) {
-        resultado = filtrarPorRealizadas(resultado)
-    }
-    pintarNotasConFiltro(resultado)
-});
-
-document.getElementById('filter-done').addEventListener('change', () => {
-    const texto = document.getElementById('buscarTexto').value;
-    const realizadas = document.getElementById('filter-done').checked;
+    const texto = document.getElementById('buscarTexto').value
+    const realizadas = document.getElementById('filtroNotas').checked
     let resultado = filtrarPorTexto(dataNotas, texto)
     if (realizadas) {
         resultado = filtrarPorRealizadas(resultado)
@@ -115,11 +113,29 @@ document.getElementById('filter-done').addEventListener('change', () => {
 })
 
 
+    // CODIGO PARA FILTRAR NOTAS REALIZADAS
+
+// Función para filtrar notas realizadas
+function filtrarPorRealizadas(array) {
+    return array.filter(nota => nota.realizada)
+}
+
+
+document.getElementById('filtroNotas').addEventListener('change', () => {
+    const texto = document.getElementById('buscarTexto').value;
+    const realizadas = document.getElementById('filtroNotas').checked;
+    let resultado = filtrarPorTexto(dataNotas, texto)
+    if (realizadas) {
+        resultado = filtrarPorRealizadas(resultado)
+    }
+    pintarNotasConFiltro(resultado)
+})
+
 function pintarNotasConFiltro(notasFiltradas) {
 
-    let containerNotas = document.getElementById('contenedorNotas')
+    const containerNotas = document.getElementById('contenedorNotas')
     
-    contenedor.innerHTML = ''
+    containerNotas.innerHTML = ''
 
     notasFiltradas.forEach(nota => {
 
