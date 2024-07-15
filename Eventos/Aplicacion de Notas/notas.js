@@ -1,7 +1,32 @@
 
-let idGlobal = 0 // Inicializa la variable idGlobal
-const dataNotas = [] // Array para almacenar las notas
+const dataNotas = [
+    {
+        id: 1,
+        titulo:'Sacar la basura',
+        texto: 'mi mama me va a retar sino lo hago',
+        realizada: false
+    },
+    {
+        id: 2,
+        titulo:'Quedo comida de ayer',
+        texto: 'quedo comida de ayer',
+        realizada: false
+    },
+    {
+        id: 3,
+        titulo:'Estudiar Eventos',
+        texto: 'estoy flojo de papeles y no voy a aprobar la task 3',
+        realizada: false
+    },
+    {
+        id: 4,
+        titulo:'Tomar agua',
+        texto: 'Debo hidratarme bien para no desmayarme',
+        realizada: false
+    }
+] // Array para almacenar las notas
 
+let idGlobal = dataNotas.length > 0 ? dataNotas[dataNotas.length - 1].id : 0; // Inicializa la variable idGlobal
 
 // e. Crear una función que pinte las notas en forma de tarjetas dentro del div
 // contenedor.
@@ -16,7 +41,7 @@ const dataNotas = [] // Array para almacenar las notas
         
         let tarjeta = document.createElement('div')
 
-        tarjeta.className = "col p-2"
+        tarjeta.className = "col mb-2"
 
         tarjeta.innerHTML = `
             
@@ -26,7 +51,7 @@ const dataNotas = [] // Array para almacenar las notas
                         <input onClick="marcarRealizada(${nota.id})" type="checkbox" ${nota.realizada ? "checked" : ""}>
                         <h5 class="card-title text-center"><b>${nota.titulo}</b></h5>
                     </div>
-                    <p class="card-text">Texto: ${nota.texto}</p>
+                    <p class="card-text">${nota.texto}</p>
                     <button type="button" class="btn btn-primary mb-3 bg-danger border-0 onClick="borrarNota(${nota.id})">Borrar Nota</button>
                 </div>
             </div>
@@ -143,7 +168,7 @@ function pintarNotasConFiltro(notasFiltradas) {
 
         let tarjeta = document.createElement('div')
 
-        tarjeta.className = "col"
+        tarjeta.className = "col mb-2"
 
         tarjeta.innerHTML = `
             
@@ -153,7 +178,7 @@ function pintarNotasConFiltro(notasFiltradas) {
                         <input onClick="marcarRealizada(${nota.id})" type="checkbox" ${nota.realizada ? "checked" : ""}>
                         <h5 class="card-title text-center"><b>${nota.titulo}</b></h5>
                     </div>
-                    <p class="card-text">Texto: ${nota.texto}</p>
+                    <p class="card-text">${nota.texto}</p>
                     <button type="button" class="btn btn-primary mb-3 bg-danger border-0 onClick="borrarNota(${nota.id})">Borrar Nota</button>
                 </div>
             </div>
