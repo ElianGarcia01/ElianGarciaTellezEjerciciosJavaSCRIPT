@@ -1,4 +1,4 @@
-
+let idGlobal = 0
 const dataNotas = [
     {
         id: 1,
@@ -8,7 +8,7 @@ const dataNotas = [
     },
     {
         id: 2,
-        titulo:'Quedo comida de ayer',
+        titulo:'Comida',
         texto: 'quedo comida de ayer',
         realizada: false
     },
@@ -26,7 +26,7 @@ const dataNotas = [
     }
 ] // Array para almacenar las notas
 
-let idGlobal = dataNotas.length > 0 ? dataNotas[dataNotas.length - 1].id : 0; // Inicializa la variable idGlobal
+// let idGlobal = dataNotas.length > 0 ? dataNotas[dataNotas.length - 1].id : 0;
 
 // e. Crear una función que pinte las notas en forma de tarjetas dentro del div
 // contenedor.
@@ -52,7 +52,7 @@ let idGlobal = dataNotas.length > 0 ? dataNotas[dataNotas.length - 1].id : 0; //
                         <h5 class="card-title text-center"><b>${nota.titulo}</b></h5>
                     </div>
                     <p class="card-text">${nota.texto}</p>
-                    <button type="button" class="btn btn-primary mb-3 bg-danger border-0 onClick="borrarNota(${nota.id})">Borrar Nota</button>
+                    <button type="button" class="btn btn-primary mb-3 bg-danger border-0" onClick="borrarNota(${nota.id})">Borrar Nota</button>
                 </div>
             </div>
             `
@@ -60,6 +60,8 @@ let idGlobal = dataNotas.length > 0 ? dataNotas[dataNotas.length - 1].id : 0; //
         
     })
     }
+
+    pintarNotas()
 
 
     // CODIGO DE BOTON GUARDAR
@@ -95,9 +97,9 @@ document.getElementById('guardar').addEventListener('click', () => {
 
 // Función para borrar una nota
 function borrarNota(id) {
-    let borrar = dataNotas.findIndex(nota => nota.id === id)
-    if (borrar !== -1) {
-        dataNotas.splice(borrar, 1)
+    let indice = dataNotas.findIndex(nota => nota.id === id)
+    if (indice !== -1) {
+        dataNotas.splice(indice, 1)
         pintarNotas()
     }
 }
@@ -179,7 +181,7 @@ function pintarNotasConFiltro(notasFiltradas) {
                         <h5 class="card-title text-center"><b>${nota.titulo}</b></h5>
                     </div>
                     <p class="card-text">${nota.texto}</p>
-                    <button type="button" class="btn btn-primary mb-3 bg-danger border-0 onClick="borrarNota(${nota.id})">Borrar Nota</button>
+                    <button type="button" class="btn btn-primary mb-3 bg-danger border-0" onClick="borrarNota(${nota.id})">Borrar Nota</button>
                 </div>
             </div>
             `
