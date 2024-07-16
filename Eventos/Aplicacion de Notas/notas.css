@@ -2,3 +2,15 @@
 textarea {
     resize: none
 }
+
+body {
+    min-height: 100vh;
+}
+
+.nota-realizada .card-text {
+    text-decoration: line-through; /* Subrayado cuando la tarjeta está marcada como realizada */
+}
+
+.text-line-through {
+    text-decoration: line-through; /* Subrayado siempre que la clase esté presente */
+}

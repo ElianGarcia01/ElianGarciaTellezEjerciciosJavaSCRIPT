@@ -1,21 +1,22 @@
-let idGlobal = 0
+// Array para almacenar las notas
+
 const dataNotas = [
     {
         id: 1,
         titulo:'Sacar la basura',
-        texto: 'mi mama me va a retar sino lo hago',
+        texto: 'Mi mama me va a retar sino lo hago',
         realizada: false
     },
     {
         id: 2,
         titulo:'Comida',
-        texto: 'quedo comida de ayer',
+        texto: 'Quedo comida de ayer',
         realizada: false
     },
     {
         id: 3,
         titulo:'Estudiar Eventos',
-        texto: 'estoy flojo de papeles y no voy a aprobar la task 3',
+        texto: 'Estoy flojo de papeles y no voy a aprobar la task 1',
         realizada: false
     },
     {
@@ -24,9 +25,9 @@ const dataNotas = [
         texto: 'Debo hidratarme bien para no desmayarme',
         realizada: false
     }
-] // Array para almacenar las notas
+]
 
-// let idGlobal = dataNotas.length > 0 ? dataNotas[dataNotas.length - 1].id : 0;
+let idGlobal = dataNotas.id
 
 // e. Crear una función que pinte las notas en forma de tarjetas dentro del div
 // contenedor.
@@ -51,7 +52,7 @@ const dataNotas = [
                         <input onClick="marcarRealizada(${nota.id})" type="checkbox" ${nota.realizada ? "checked" : ""}>
                         <h5 class="card-title text-center"><b>${nota.titulo}</b></h5>
                     </div>
-                    <p class="card-text">${nota.texto}</p>
+                    <p class="card-text ${nota.realizada ? 'text-line-through' : ''}">${nota.texto}</p>
                     <button type="button" class="btn btn-primary mb-3 bg-danger border-0" onClick="borrarNota(${nota.id})">Borrar Nota</button>
                 </div>
             </div>
@@ -68,6 +69,11 @@ const dataNotas = [
 
 // Funcion para agrega una nota
 function agregarNotas(titulo,texto) {
+
+    titulo = titulo.charAt(0).toUpperCase() + titulo.slice(1);
+    texto = texto.charAt(0).toUpperCase() + texto.slice(1);
+
+
     let nuevaNota = {
         id: idGlobal++,
         titulo,
@@ -128,7 +134,10 @@ function marcarRealizada(id) {
 // Función para filtrar notas por texto
 function filtrarPorTexto(array, texto) {
     if (!texto) return array
-    return array.filter(nota => nota.titulo.includes(texto) || nota.texto.includes(texto))
+
+    const textoMinusculas = texto.toLowerCase()
+
+    return array.filter(nota => nota.titulo.toLowerCase().includes(textoMinusculas) || nota.texto.toLowerCase().includes(textoMinusculas)) 
 }
 
 document.getElementById('buscarTexto').addEventListener('input', () => {
@@ -180,7 +189,7 @@ function pintarNotasConFiltro(notasFiltradas) {
                         <input onClick="marcarRealizada(${nota.id})" type="checkbox" ${nota.realizada ? "checked" : ""}>
                         <h5 class="card-title text-center"><b>${nota.titulo}</b></h5>
                     </div>
-                    <p class="card-text">${nota.texto}</p>
+                    <p class="card-text ${nota.realizada ? 'text-line-through' : ''}">${nota.texto}</p>
                     <button type="button" class="btn btn-primary mb-3 bg-danger border-0" onClick="borrarNota(${nota.id})">Borrar Nota</button>
                 </div>
             </div>
